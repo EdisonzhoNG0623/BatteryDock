@@ -19,6 +19,8 @@ env \
 mkdir -p "$app_dir/Contents/MacOS" "$app_dir/Contents/Resources"
 cp "$build_dir/release/BatteryDock" "$app_dir/Contents/MacOS/BatteryDock"
 cp "$project_dir/Resources/Info.plist" "$app_dir/Contents/Info.plist"
+xattr -cr "$app_dir"
 codesign --force --deep --sign - "$app_dir"
+codesign --verify --deep --strict "$app_dir"
 
 echo "$app_dir"

@@ -32,6 +32,17 @@ charge-limit API, actual charging control requires the separately installed
 open-source [`batt`](https://github.com/charlie0129/batt) daemon. BatteryDock
 does not bundle it, invoke `sudo`, or retain an administrator password.
 
+## Install
+
+Download `BatteryDock-1.0.0-macOS-arm64.dmg` from the
+[latest release](https://github.com/EdisonzhoNG0623/BatteryDock/releases/latest),
+open it, and drag **BatteryDock** into **Applications**. BatteryDock then appears
+in Launchpad and runs from the menu bar rather than the Dock.
+
+The 1.0.0 build is ad-hoc signed but not Apple-notarized. On first launch,
+macOS may ask you to confirm it in **System Settings → Privacy & Security**.
+Always verify the download against `SHA256SUMS.txt` from the same release.
+
 ## Build and run
 
 ```sh
@@ -44,6 +55,12 @@ To create a locally signed app bundle:
 ```sh
 ./scripts/build-app.sh
 open dist/BatteryDock.app
+```
+
+To produce the same DMG, ZIP, and checksums used for a release:
+
+```sh
+./scripts/package-release.sh 1.0.0
 ```
 
 The executable currently runs as an accessory/menu-bar process. Press `Control-C` in
@@ -86,3 +103,5 @@ BatteryDock intentionally stays read-only.
 
 BatteryDock is released under the [MIT License](LICENSE). See
 [Third-party notices](THIRD_PARTY_NOTICES.md) for optional integrations.
+
+User-visible changes are documented in [CHANGELOG.md](CHANGELOG.md).
